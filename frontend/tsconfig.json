@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
+    "importHelpers": true,
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "es2018"
+    ],
+    "mapRoot": "dist",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitReturns": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "strict": true,
+    "strictFunctionTypes": false,
+    "stripInternal": true,
+    "target": "esnext"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}

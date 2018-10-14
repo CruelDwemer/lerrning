@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "no-shadowed-variable": true
+  }
+}
+

@@ -1,0 +1,53 @@
+{
+  "name": "poetez-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Backend for the Poetez Project",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "npm run watch",
+    "commit": "git-cz",
+    "build": "npm run compile && npm run launch",
+    "watch": "nodemon -L --watch src -e ts --exec \"npm run build\"",
+    "compile": "tsc -p ./tsconfig.json",
+    "launch": "node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "db-migrate --config ./database.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/poetez/poetez-backend.git"
+  },
+  "author": "Vlad Rindevich",
+  "bugs": {
+    "url": "https://github.com/poetez/poetez-backend/issues"
+  },
+  "homepage": "https://github.com/poetez/poetez-backend#readme",
+  "devDependencies": {
+    "@types/knex": "^0.14.26",
+    "@types/koa": "^2.0.46",
+    "@types/koa-bodyparser": "^5.0.1",
+    "@types/koa-router": "^7.0.32",
+    "@types/pg": "^7.4.10",
+    "commitizen": "^2.10.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "db-migrate": "^0.11.3",
+    "db-migrate-pg": "^0.4.0",
+    "husky": "^1.0.1",
+    "nodemon": "^1.18.4",
+    "typescript": "^3.1.1"
+  },
+  "dependencies": {
+    "http2": "^3.3.7",
+    "knex": "^0.15.2",
+    "koa": "^2.5.3",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "pg": "^7.4.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}

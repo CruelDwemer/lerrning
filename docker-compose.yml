@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  web:
+    container_name: mike_web
+    build: backend
+    env_file: .env
+    environment:
+      DATABASE_URL: 'postgres://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}'
+    ports:
+     - '5000:3000'
+    volumes:
+     - ./backend:/var/www:rw
+    depends_on:
+     - db
+  db:
+    container_name: mike_db
+    image: postgres
+    restart: always
+    env_file: .env
+    environment:
+      POSTGRES_DB: $DB_NAME
+      POSTGRES_PASSWORD: $DB_PASSWORD
+    ports:
+      - '5432:5432'

@@ -1,0 +1,14 @@
+{
+  "dev": {
+    "driver": "pg"
+  },
+  "pg": {
+    "driver": "pg",
+    "user": {"ENV": "DB_USER"},
+    "password": {"ENV": "DB_PASSWORD"},
+    "host": "db",
+    "database": {"ENV": "DB_NAME"},
+    "schema": "public"
+  },
+  "sql-file": true
+}

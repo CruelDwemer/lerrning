@@ -1,0 +1,39 @@
+{
+  "name": "learning",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@poetez/react-scripts": "0.1.6",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "precommit": "typecheck && lint-staged",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tslint \"src/**/*.+(ts|tsx)\" -c tslint.json -p tsconfig.json -t verbose",
+    "lint-staged": "lint-staged"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@types/jest": "^23.3.2",
+    "@types/node": "^10.11.3",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.8",
+    "autoprefixer": "^9.1.5",
+    "cssnano": "^4.1.4",
+    "husky": "^1.0.1",
+    "lint-staged": "^7.3.0",
+    "postcss-import": "^12.0.0",
+    "postcss-preset-env": "^6.0.7",
+    "tslint": "^5.11.0",
+    "tslint-config-poetez": "^1.1.1",
+    "typescript": "^3.1.1"
+  }
+}
