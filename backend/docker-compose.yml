@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  db:
+    container_name: mike_db_container
+    image: postgres
+    env_file: .env
+    environment:
+      POSTGRES_USER: $DB_USER
+      POSTGRES_DB: $DB_NAME
+      POSTGRES_PASSWORD: $DB_PASSWORD
+    ports:
+      - '5432:5432'
