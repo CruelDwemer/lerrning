@@ -38,6 +38,7 @@
     "typescript": "^3.1.1"
   },
   "dependencies": {
+    "dotenv": "^6.2.0",
     "http2": "^3.3.7",
     "knex": "^0.15.2",
     "koa": "^2.5.3",
