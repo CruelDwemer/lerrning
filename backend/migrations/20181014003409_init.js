@@ -1,9 +1,7 @@
-const USAGE_TABLE = 'usage';
-const TARIFFS_TABLE = 'tariffs';
-const COMPANIES_TABLE = 'companies';
+const Table = require('../core/tables');
 
-exports.up = async (knex, Promise) => {
-    await knex.schema.createTable(USAGE_TABLE, (t) => {
+exports.up = async (knex) => {
+    await knex.schema.createTable(Table.Usage, (t) => {
         t.increments('id').unsigned().primary();
         t.dateTime('createdAt').notNull();
         t.dateTime('updatedAt').nullable();
@@ -15,9 +13,9 @@ exports.up = async (knex, Promise) => {
         t.decimal('electricityUsage').notNull();
     });
 
-    console.log(`table '${USAGE_TABLE}' successfully created`);
+    console.log(`table '${Table.Usage}' successfully created`);
 
-    await knex.schema.createTable(TARIFFS_TABLE, (t) => {
+    await knex.schema.createTable(Table.Tariffs, (t) => {
         t.increments('id').unsigned().primary();
         t.dateTime('createdAt').notNull();
         t.dateTime('updatedAt').nullable();
@@ -32,9 +30,9 @@ exports.up = async (knex, Promise) => {
         t.decimal('sanitation').notNull();
     });
 
-    console.log(`table '${TARIFFS_TABLE}' successfully created`);
+    console.log(`table '${Table.Tariffs}' successfully created`);
 
-    await knex.schema.createTable(COMPANIES_TABLE, (t) => {
+    await knex.schema.createTable(Table.Companies, (t) => {
         t.increments('id').unsigned().primary();
         t.dateTime('createdAt').notNull();
         t.dateTime('updatedAt').nullable();
@@ -46,11 +44,11 @@ exports.up = async (knex, Promise) => {
         t.decimal('novosibirskenergosbyt').notNull();
     });
 
-    console.log(`table '${COMPANIES_TABLE}' successfully created`);
+    console.log(`table '${Table.Companies}' successfully created`);
 };
 
-exports.down = async (knex, Promise) => {
-    await knex.schema.dropTable(USAGE_TABLE);
-    await knex.schema.dropTable(TARIFFS_TABLE);
-    await knex.schema.dropTable(COMPANIES_TABLE);
+exports.down = async (knex) => {
+    await knex.schema.dropTable(Table.Usage);
+    await knex.schema.dropTable(Table.Tariffs);
+    await knex.schema.dropTable(Table.Companies);
 };
