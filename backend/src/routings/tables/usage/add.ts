@@ -11,7 +11,10 @@ export const usageAddHandler: Middleware<IAppRouteContext<IUsageAddRequest>> = a
     const query = await connection(Table.Usage)
     .returning(['id', 'createdAt'])
     .insert({
-        ...body,
+        recordedAt: body.recordedAt,
+        hotWaterUsage: body.hotWaterUsage,
+        coldWaterUsage: body.coldWaterUsage,
+        electricityUsage: body.electricityUsage,
         createdAt: connection.raw('NOW()')
     })
     ctx.body = query;

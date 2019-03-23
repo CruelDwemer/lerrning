@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
     "@poetez/react-scripts": "0.1.6",
+    "http-proxy-middleware": "^0.19.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
