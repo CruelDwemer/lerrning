@@ -41,8 +41,9 @@ class AddUsage extends React.Component<IProps, IState> {
     }
 
     saveUsage = () => {
-        if(this.state.hotWaterUsage && this.state.coldWaterUsage && this.state.electricityUsage) {
-            this.props.setUsageValues({...this.state});
+        const {hotWaterUsage, coldWaterUsage, electricityUsage} = this.state;
+        if(hotWaterUsage && coldWaterUsage && electricityUsage) {
+            this.props.setUsageValues({hotWaterUsage, coldWaterUsage, electricityUsage});
         }
     }
 
@@ -77,7 +78,10 @@ class AddUsage extends React.Component<IProps, IState> {
                 />
                 <Button
                     onClick={this.saveUsage}
-                >Save</Button>
+                    color="primary"
+                >
+                    Save
+                </Button>
             </div>
         )
     }

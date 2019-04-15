@@ -1,28 +1,53 @@
 import * as React from 'react';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
+import {ThemeProvider} from '@material-ui/styles';
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import createSagaMiddleware from 'redux-saga';
+import blueGrey from '@material-ui/core/colors/blueGrey';
+import cyan from '@material-ui/core/colors/cyan';
+import {withStyles, WithStyles} from '@material-ui/styles';
 
-import * as styles from './App.pcss';
+// import * as styles from './App.pcss';
 import Main from '../../pages/startPage';
 import AddUsage from '../../pages/AddUsage';
 import ChartPage from '../../pages/chartPage/ChartPage';
 import fillUsageReducer from '../../store/reducers';
+import rootSaga from "../../store/sagas";
 // import StatisticsPage from '../../statistics/components/StatisticsPage';
 
-const store = createStore(fillUsageReducer);
+type Styles = "container";
 
-const theme = createMuiTheme();
+const styles = {
+    container: {
+        textAlign: "center",
+        backgroundColor: blueGrey[700]
+    }
+}
 
-export default class App extends React.Component {
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(fillUsageReducer, applyMiddleware(sagaMiddleware));
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: cyan[200],
+    },
+    secondary: {
+      main: cyan[200]
+    }
+  }
+});
+
+sagaMiddleware.run(rootSaga);
+
+class App extends React.Component<WithStyles<Styles>> {
   public render(): React.ReactNode {
+    const {classes} = this.props;
     return (
-      <ThemeProvider theme={theme} >
-      <Provider store={store}>
-        
-          <div className={styles.container}>
+      <MuiThemeProvider theme={theme} >
+        <Provider store={store}>
+          <div className={classes.container}>
             <Router>
               <ChartPage />
 
@@ -31,12 +56,13 @@ export default class App extends React.Component {
               <Route path="/tariffs" component={Tariffs} />
             </Router>
           </div>
-        
-      </Provider>
-      </ThemeProvider>
+        </Provider>
+      </MuiThemeProvider>
     );
   }
 }
+
+export default withStyles<{}>(styles)(App);
 
 class Usage extends React.Component {
   render() {
